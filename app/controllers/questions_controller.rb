@@ -19,17 +19,18 @@ class QuestionsController < ApplicationController
   	@program = Question.create(set_params)
   	@program.user_id = current_user.id
   	@program.save
-  	redirect_to action: 'index'
+  	redirect_to action: 'show' , id: @program.id 
 
   end
 
   def show
+  	@codes = Code.all
   end
 
   def update
   	
-  	@program = Question.update(set_params)
-   
+  	@program = @program.update(set_params)
+    redirect_to action: 'show' , id: params[:id]  
   end
 
   def destroy
@@ -38,7 +39,8 @@ class QuestionsController < ApplicationController
 
   private 
   	def set_question
-  		@program = Question.find_by(params[:id])
+  		@program = Question.find(params[:id])
+ 
   	end
 
   	def set_params

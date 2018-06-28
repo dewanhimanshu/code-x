@@ -2,6 +2,7 @@ class CodesController < ApplicationController
   before_action :set_code, only:[:edit,:show,:update,:destroy]
    before_action :authenticate_user!
 
+
   def index
   	@codes = Code.all
   end
@@ -11,14 +12,20 @@ class CodesController < ApplicationController
   end
 
   def new
-  	@code = Code.new
+    @p = Question.find(params[:question_id])
+    @code = @p.codes.build
+    cookies[:p_id] = @p.id
+    
+
   end
 
   def create
-  	@code = Code.new(set_params)
+  	@code = @p.codes.build(set_params)
+
   end
 
   def show
+
   end
 
   def update
