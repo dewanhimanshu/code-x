@@ -1,0 +1,15 @@
+<h1>Listing all the Questions </h1>
+<% @programs.reverse.each do |p| %>
+<h4> Programming Question </h4>
+<div style="    width: 100%;
+  min-height: 200px;
+    background-color: lightcoral;
+">
+<%= p.program %>
+</div>
+<br/>
+<p>Owner</p>
+<%= p.user.email %><br/>
+<%= link_to 'solution' , code_path(p)  %>||<%= link_to 'add solution' , new_code_path(p) %>
+
+<% end %>
