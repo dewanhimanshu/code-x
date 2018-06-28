@@ -1,2 +1,7 @@
-<h1>Codes#new</h1>
-<p>Find me in app/views/codes/new.html.erb</p>
+<h1>Programing Qiestion</h1>
+<%= @p.program %>
+<h3>Type Your Solution </h3>
+<%= simple_form_for @code ,:url => {:action => "create"} do |f| %>
+<%= f.input :solution , :input_html => {:rows => 20} %>
+<%= f.button :submit %>
+<% end %>

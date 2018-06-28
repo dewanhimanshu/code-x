@@ -15,16 +15,23 @@ class CodesController < ApplicationController
     @p = Question.find(params[:question_id])
     @code = @p.codes.build
     cookies[:p_id] = @p.id
+
     
 
   end
 
   def create
-  	@code = @p.codes.build(set_params)
+  	@code = Code.create(set_params)
+    @code.user_id = current_user.id
+    @code.question_id = cookies[:p_id]
+    @code.save
+    redirect_to controller: 'questions' , action: 'show' , id: cookies[:p_id]
+    
 
   end
 
   def show
+    @question = Question.find(params[:question_id])
 
   end
 

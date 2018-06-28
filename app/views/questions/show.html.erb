@@ -1,13 +1,15 @@
 <h1>Question</h1>
-<%= @program.program %>
+<%= @program.program %><br/>
+<%= link_to 'add solution' , new_question_code_path(@program) %>
 <br/>
 <% @codes.each do |c|  %>
 
 	<% if c.question_id == @program.id %>
 		<h1> Solution to it </h1>
+
 		<%= c.solution %>
+		<%= link_to 'Expand_solution' ,  question_code_path(@program,c) %>
 	<% end %>
 <% end %>
 <p>Owner</p>
 <%= @program.user.email %><br/>
-<%= link_to 'solution' , code_path(@program)  %>||<%= link_to 'add solution' , new_code_path(@program) %>

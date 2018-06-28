@@ -10,6 +10,6 @@
 <br/>
 <p>Owner</p>
 <%= p.user.email %><br/>
-||<%= link_to 'add solution' ,  new_question_code_path(p) %>
+<%= link_to 'all solutions' , question_path(p) %> ||<%= link_to 'add solution' ,  new_question_code_path(p) %>
 
 <% end %>
